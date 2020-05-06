@@ -21,5 +21,8 @@ public class SearchResultTest {
         SearchResult[] list = {searchResult1,searchResult2,searchResult3};
         Arrays.sort(list);
         Arrays.stream(list).forEach(System.out :: println);
+
+        SearchResultComparator searchResultComparator = new SearchResultComparator();
+        System.out.println(searchResultComparator.compare(searchResult1, searchResult2));
     }
 }
