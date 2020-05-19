@@ -1,5 +1,10 @@
 package com.cui.bookreadingfeel.corejava;
 
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import static java.lang.Math.*;
@@ -39,6 +44,36 @@ public class Base {
                         {45,657,98,67}
                 };
         System.out.println("打印二维数组：" + Arrays.deepToString(magicSquare));
-        
+
+        // Java反射有3种方法
+        Class reflectTestClass1 = ReflectTest.class;
+        ReflectTest reflectTest = new ReflectTest();
+        Class reflectTestClass2 = reflectTest.getClass();
+        System.out.println(reflectTestClass2.getComponentType());
+        Class reflectTestClass3 = null;
+        try {
+             reflectTestClass3= Class.forName("com.cui.bookreadingfeel.corejava.ReflectTest");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("类名" + reflectTestClass3.getName());
+        Constructor constructor = null;
+        Method method = null;
+        try {
+            constructor = reflectTestClass3.getConstructor();
+            ReflectTest newInstance = (ReflectTest) constructor.newInstance();
+            method = reflectTestClass3.getMethod("sayAge",int.class);
+            method.invoke(newInstance,18);
+            newInstance.say();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 }
