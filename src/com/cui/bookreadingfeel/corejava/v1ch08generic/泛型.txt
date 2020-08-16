@@ -1,0 +1,4 @@
+1，切换限定
+    class Interval<T extends Serializable & Comparable>
+    原始类型用Serializable替换T，而编译器在必要时要向Comparable插入强制类型转换。
+    为了提高效率，应该将标签接口（即没有方法的接口）放在边界列表的末尾。
