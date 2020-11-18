@@ -1,0 +1,7 @@
+·void interrupt（）
+向线程发送中断请求。线程的中断状态将被设置为true。如果目前该线程被一个sleep调用阻塞，那么，InterruptedException异常被抛出。
+·static boolean interrupted（）
+测试当前线程（即正在执行这一命令的线程）是否被中断。注意，这是一个静态方法。这一调用会产生副作用——它将当前线程的中断状态重置为false。
+·boolean isInterrupted（）
+测试线程是否被终止。不像静态的中断方法，这一调用不改变线程的中断状态。
+·static Thread currentThread（）返回代表当前执行线程的Thread对象。
